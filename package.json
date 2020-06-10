@@ -1,0 +1,32 @@
+{
+  "name": "secondprj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "gayathri <gayathrichinnapillaiilt@gmail.com> (https://github.com/Gayathrichinnapillai/Nodejsprj.git)",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jade": "^1.11.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.14",
+    "morgan": "^1.10.0",
+    "npm": "^6.14.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gayathrichinnapillai/Weddingproject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gayathrichinnapillai/Weddingproject/issues"
+  },
+  "homepage": "https://github.com/Gayathrichinnapillai/Weddingproject#readme"
+}
