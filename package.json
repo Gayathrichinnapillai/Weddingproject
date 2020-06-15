@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "gayathri <gayathrichinnapillaiilt@gmail.com> (https://github.com/Gayathrichinnapillai/Nodejsprj.git)",
@@ -19,7 +19,8 @@
     "lodash": "^4.17.15",
     "mongoose": "^5.9.14",
     "morgan": "^1.10.0",
-    "npm": "^6.14.5"
+    "npm": "^6.14.5",
+    "react-scripts": "^2.1.8"
   },
   "devDependencies": {},
   "repository": {
