@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 
-router.post('/',function(req,res,next){ 
+router.post('/',async(req,res)=>{ 
 
     // Request validation
     if(!req.body) {
@@ -14,18 +14,21 @@ router.post('/',function(req,res,next){
             message: "User content can not be empty"
         });
     }
-    Useregister.count({ Emailid:req.body.Emailid})
-    .then((count) => {
-      if (count > 0) {     
-        return res.status(400).send({
-            message: "User already exist"
-        });
-      } 
-      else
-      {
-          
-      }
-    });
+  
+        if (await Useregister.findOne({ Emailid:req.body.Emailid})) {
+            res.status(401).send({
+                response_code:401,
+                response_message:"Emailid already exist."
+            });
+            return;
+        }
+        if (await Useregister.findOne({ Phonenumber:req.body.Phonenumber})) {
+            res.status(401).send({
+                response_code:401,
+                response_message:"Phonenumber already exist."               
+            });
+          return;
+        }
     const userreg=new Useregister(req.body)
     {      
         if (req.body.Password) {
@@ -33,7 +36,10 @@ router.post('/',function(req,res,next){
         }       
         userreg.save()
         .then(data => {
-            res.send(data);
+            res.status(200).send({
+                response_status:"200",
+                response_message:"created"
+            });
         }).catch(err => {
             res.status(500).send({
                 message: err.message || "Something wrong while creating the product."
@@ -63,8 +69,9 @@ router.post('/authenticate',function(req,res,next)
        }
     if (user && bcrypt.compareSync(req.body.Password,user[0].Password)) {
         const token = jwt.sign({ sub: user.id }, config.secretKey,{expiresIn: '60m'});
+        result.response_code="200";
+        result.response_message="success";
         result.token = token;
-        result.result = user;
         res.send(result);       
     }
     else
@@ -75,5 +82,4 @@ router.post('/authenticate',function(req,res,next)
     }
   });   
 });
-
 module.exports=router;
